@@ -1,4 +1,6 @@
 * {
+
+    transition: all 0.5s;
     margin: 0px;
     padding: 0px;
     font-family: 'Inconsolata', monospace;
@@ -19,8 +21,7 @@ body,
 
 .box {
     position: relative;
-    padding: 2%;  
-    transition: all 0.5s;  
+    padding: 2%;    
 }
 
 #left-tab {
