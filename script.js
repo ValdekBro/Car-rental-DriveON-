@@ -1,14 +1,25 @@
-
+var data = [];
+$( "#searchInput" ).autocomplete({
+    source: data
+});
 
 //Add new button click handler
 var id = 0;
 $('#addCarButton').click( () => {
+    let model = $('#modelInput').val();
+    let color = $('#colorInput').val();
+    let price = $('#priceInput').val();
+
+    if(!data.includes(model))data.push(model);
+    if(!data.includes(color))data.push(color);
+    $( "#searchInput" ).autocomplete( "option", "source", data );
+
     id++;
     $('#right-tab').append($('<div></div>').addClass('box border')
     .append($('<div></div>').attr('id', id))//.addClass('hidden')
-    .append($('<div></div>').addClass('title').text($('#modelInput').val()))
-    .append($('<div></div>').addClass('label').text($('#colorInput').val()))
-    .append($('<div></div>').addClass('label').text($('#priceInput').val()))
+    .append($('<div></div>').addClass('title').text(model))
+    .append($('<div></div>').addClass('label').text(color))
+    .append($('<div></div>').addClass('label').text(price))
     .append(
         $('<button></button>').addClass('right').text('Rent')
         .click(function() {
@@ -115,8 +126,24 @@ var brands = [
     "Volkswagen",
     "Volvo"
 ]
+var colors = [
+    'red',
+    'green',
+    'black',
+    'red',
+    'white',
+    'gray',
+    'brown',
+    'purple',
+    'blue'
+]
 
 $( "#modelInput" ).autocomplete({
     source: brands,
     minLength: 2
+});
+
+$( "#colorInput" ).autocomplete({
+    source: colors,
+    minLength: 0
 });
